@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ABANAM Essowasinam Joseph — Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 2px solid #00d4ff;
+    }
+    header h1 {
+      font-size: 2.5em;
+      color: #00d4ff;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #aaa;
+    }
+    header .badges {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    header .badge {
+      background: #00d4ff22;
+      border: 1px solid #00d4ff;
+      color: #00d4ff;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    section h2 {
+      font-size: 1.8em;
+      color: #00d4ff;
+      border-left: 4px solid #00d4ff;
+      padding-left: 15px;
+      margin-bottom: 25px;
+    }
+
+    /* ── A PROPOS ── */
+    .about p {
+      line-height: 1.8;
+      color: #ccc;
+      font-size: 1.05em;
+    }
+
+    /* ── COMPETENCES ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .skill-card {
+      background: #1a1a2e;
+      border: 1px solid #00d4ff33;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-5px); }
+    .skill-card .icon { font-size: 2em; margin-bottom: 10px; }
+    .skill-card h3 { color: #00d4ff; font-size: 1em; }
+    .skill-card p { color: #999; font-size: 0.85em; margin-top: 5px; }
+
+    /* ── PROJETS ── */
+    .project-card {
+      background: #1a1a2e;
+      border: 1px solid #00d4ff33;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .project-card:hover { transform: translateY(-3px); }
+    .project-card h3 { color: #00d4ff; font-size: 1.2em; }
+    .project-card p { color: #aaa; margin: 10px 0; line-height: 1.6; }
+    .project-card .tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    .project-card .tag {
+      background: #00d4ff22;
+      color: #00d4ff;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: 0.8em;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 15px;
+      background: #00d4ff;
+      color: #0f0f1a;
+      padding: 8px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    /* ── PARCOURS ── */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: #00d4ff44;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; top: 5px;
+      width: 10px; height: 10px;
+      background: #00d4ff;
+      border-radius: 50%;
+    }
+    .timeline-item h3 { color: #fff; font-size: 1em; }
+    .timeline-item span {
+      color: #00d4ff;
+      font-size: 0.85em;
+    }
+    .timeline-item p { color: #999; font-size: 0.9em; margin-top: 5px; }
+
+    /* ── CONTACT ── */
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .contact-links a {
+      background: #1a1a2e;
+      border: 1px solid #00d4ff;
+      color: #00d4ff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: background 0.2s;
+    }
+    .contact-links a:hover { background: #00d4ff22; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+      font-size: 0.85em;
+      border-top: 1px solid #1a1a2e;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <h1>ABANAM Essowasinam Joseph</h1>
+  <p>Enseignant en Génie Électronique · Étudiant Master Big Data · Passionné IoT</p>
+  <div class="badges">
+    <span class="badge">🇹🇬 Togo</span>
+    <span class="badge">⚡ Génie Électrique</span>
+    <span class="badge">📡 IoT</span>
+    <span class="badge">📊 Data Engineering</span>
+    <span class="badge">🎓 UCAO-UUT</span>
+  </div>
+</header>
+
+<!-- ══ A PROPOS ══ -->
+<section class="about">
+  <h2>👤 À propos</h2>
+  <p>
+    Ingénieur en Génie Électrique diplômé de l'École Polytechnique de Lomé (EPL),
+    je suis actuellement enseignant en Génie Électronique au LETP Aného-Glidji
+    et étudiant en Master Big Data (ESI) à l'UCAO-UUT.
+    Passionné par l'IoT, je construis des systèmes connectés avec ESP32 et Arduino,
+    et je me spécialise en Data Engineering pour créer des pipelines de données
+    intelligents au service des problématiques africaines.
+  </p>
+</section>
+
+<!-- ══ COMPETENCES ══ -->
+<section>
+  <h2>🛠️ Compétences</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="icon">📡</div>
+      <h3>IoT & Embarqué</h3>
+      <p>ESP32, Arduino, DHT11, MQTT</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🐍</div>
+      <h3>Python</h3>
+      <p>Data Engineering, paho-mqtt, pandas</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🗄️</div>
+      <h3>Bases de données</h3>
+      <p>InfluxDB, PostgreSQL, SQL</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">📊</div>
+      <h3>Visualisation</h3>
+      <p>Grafana, dashboards temps réel</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">⚡</div>
+      <h3>Génie Électrique</h3>
+      <p>Circuits, électronique, systèmes embarqués</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">👨‍🏫</div>
+      <h3>Enseignement</h3>
+      <p>Génie Électronique, LETP Aného-Glidji</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJETS ══ -->
+<section>
+  <h2>🚀 Projets</h2>
+
+  <div class="project-card">
+    <h3>🌡️ Système de Monitoring IoT — ESP32 + Grafana</h3>
+    <p>
+      Pipeline de données complet : le capteur DHT11 branché sur un ESP32
+      envoie la température et l'humidité via MQTT, un script Python stocke
+      les données dans InfluxDB, et Grafana les affiche en temps réel.
+    </p>
+    <div class="tags">
+      <span class="tag">ESP32</span>
+      <span class="tag">DHT11</span>
+      <span class="tag">MQTT</span>
+      <span class="tag">Python</span>
+      <span class="tag">InfluxDB</span>
+      <span class="tag">Grafana</span>
+    </div>
+    <a href="https://github.com/JosephLaPaix/esp32-iot-monitoring" target="_blank">
+      Voir sur GitHub →
+    </a>
+  </div>
+
+  <!-- Tu ajouteras d'autres projets ici plus tard -->
+
+</section>
+
+<!-- ══ PARCOURS ══ -->
+<section>
+  <h2>🎓 Parcours</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <span>2026 — En cours</span>
+      <h3>Master Big Data (ESI) — UCAO-UUT, Lomé</h3>
+      <p>Spécialisation en Data Engineering et Big Data</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>2025 — En cours</span>
+      <h3>Enseignant en Génie Électronique — LETP Aného-Glidji</h3>
+      <p>Concours d'enseignement réussi en décembre 2024</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>2022</span>
+      <h3>Licence Professionnelle — Génie Électrique - Conducteur des travaux</h3>
+      <p>École Polytechnique de Lomé (EPL)</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>2018</span>
+      <h3>Baccalauréat série F2 — Électronique</h3>
+      <p>Lycée Technique ISSET, Tsévié</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section>
+  <h2>📬 Contact</h2>
+  <div class="contact-links">
+    <a href="https://github.com/JosephLaPaix" target="_blank">🐙 GitHub</a>
+    <a href="mailto:abanamjo2@gmail.com">📧 Email</a>
+    <a href ="https://www.linkedin.com/in/essowasinam-joseph-abanam-a386a7295/" target = "blank _">🔗 LinkedIn</a>
+    <a href="https://www.facebook.com/joseph.abanam" target="_blank">📘 Facebook</a>
+    <a href="https://wa.me/22898464143?text=Bonjour" target="_blank">📱 WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 ABANAM Essowasinam Joseph · Fait avec 💙 depuis Lomé, Togo
+</footer>
+
+</body>
+</html>
