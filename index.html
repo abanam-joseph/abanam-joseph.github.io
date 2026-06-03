@@ -1,1227 +1,474 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ABANAM Essowasinam Joseph — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-  <style>
-    /* ── VARIABLES ───────────────────────────────────── */
-    :root {
-      --bg:       #060810;
-      --bg2:      #0c1020;
-      --bg3:      #111828;
-      --accent:   #f97316;
-      --accent2:  #3b82f6;
-      --accent3:  #22d3ee;
-      --text:     #e8eaf0;
-      --muted:    #7a8399;
-      --border:   rgba(255,255,255,0.07);
-      --card:     rgba(255,255,255,0.03);
-    }
 
-    /* ── RESET ───────────────────────────────────────── */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ── NOISE TEXTURE ───────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
-    }
-
-    /* ── CURSOR GLOW ─────────────────────────────────── */
-    .cursor-glow {
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
-      position: fixed;
-      pointer-events: none;
-      transform: translate(-50%,-50%);
-      z-index: 1;
-      transition: opacity 0.3s;
-    }
-
-    /* ── NAV ─────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      background: rgba(6,8,16,0.85);
-      backdrop-filter: blur(20px);
-    }
-
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1em;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.8em;
-      letter-spacing: 1px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 40px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Grille de fond */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* Orbes lumineux */
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 60%);
-      top: -100px; right: -100px;
-      pointer-events: none;
-    }
-
-    .orbe2 {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%);
-      bottom: -50px; left: 10%;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(249,115,22,0.1);
-      border: 1px solid rgba(249,115,22,0.3);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 0.75em;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: blink 1.5s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
-    }
-
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.8em, 6vw, 5.5em);
-      line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 8px;
-    }
-
-    .hero h1 .name-first { color: var(--text); }
-    .hero h1 .name-last {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(249,115,22,0.6);
-    }
-
-    .hero-subtitle {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: clamp(1.1em, 2.5vw, 1.8em);
-      color: var(--muted);
-      margin: 20px 0 40px;
-      line-height: 1.4;
-    }
-
-    .hero-subtitle span { color: var(--accent); font-style: normal; }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 48px;
-    }
-
-    .badge {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.75em;
-      letter-spacing: 0.5px;
-      transition: all 0.2s;
-    }
-    .badge:hover {
-      border-color: rgba(249,115,22,0.4);
-      color: var(--accent);
-      background: rgba(249,115,22,0.05);
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      padding: 12px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.85em;
-      letter-spacing: 1px;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover {
-      background: #fb923c;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(249,115,22,0.3);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 12px 28px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      text-decoration: none;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.85em;
-      letter-spacing: 1px;
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: rgba(249,115,22,0.4);
-      color: var(--accent);
-    }
-
-    /* ── SECTIONS COMMUNES ───────────────────────────── */
-    section {
-      padding: 100px 40px;
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.7em;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.4;
-    }
-
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.8em, 3.5vw, 2.8em);
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 60px;
-      color: var(--text);
-    }
-
-    /* ── ABOUT ───────────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      font-size: 0.9em;
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-    .about-text p strong { color: var(--text); }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      transition: all 0.3s;
-    }
-    .stat-card:hover {
-      border-color: rgba(249,115,22,0.3);
-      transform: translateY(-3px);
-    }
-
-    .stat-number {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 2.2em;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 0.72em;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-    }
-
-    /* ── SKILLS ──────────────────────────────────────── */
-    .skills-section { background: var(--bg2); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-group {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-group::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .skill-group:hover::before { transform: scaleX(1); }
-    .skill-group:hover { border-color: rgba(249,115,22,0.2); }
-
-    .skill-group-icon { font-size: 1.8em; margin-bottom: 12px; }
-    .skill-group-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.95em;
-      color: var(--text);
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .skill-tag {
-      background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(249,115,22,0.2);
-      color: var(--accent);
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 0.7em;
-      letter-spacing: 0.5px;
-    }
-    .skill-tag.blue {
-      background: rgba(59,130,246,0.08);
-      border-color: rgba(59,130,246,0.2);
-      color: var(--accent2);
-    }
-    .skill-tag.cyan {
-      background: rgba(34,211,238,0.08);
-      border-color: rgba(34,211,238,0.2);
-      color: var(--accent3);
-    }
-
-    /* ── PROJECTS ────────────────────────────────────── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(249,115,22,0.05) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .project-card:hover {
-      border-color: rgba(249,115,22,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-    .project-card:hover::after { opacity: 1; }
-
-    .project-card.featured {
-      grid-column: span 2;
-      background: linear-gradient(135deg, rgba(249,115,22,0.05), rgba(59,130,246,0.05));
-      border-color: rgba(249,115,22,0.2);
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .project-icon { font-size: 2em; }
-
-    .project-status {
-      font-size: 0.65em;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 100px;
-    }
-    .status-live {
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.3);
-      color: #4ade80;
-    }
-    .status-wip {
-      background: rgba(249,115,22,0.1);
-      border: 1px solid rgba(249,115,22,0.3);
-      color: var(--accent);
-    }
-
-    .project-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1em;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    .project-desc {
-      color: var(--muted);
-      font-size: 0.82em;
-      line-height: 1.8;
-      flex: 1;
-    }
-
-    .project-pipeline {
-      font-size: 0.7em;
-      color: var(--accent);
-      background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(249,115,22,0.15);
-      border-radius: 6px;
-      padding: 8px 12px;
-      letter-spacing: 0.5px;
-    }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .project-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
-    }
-
-    .project-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.75em;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-    .project-link:hover { gap: 10px; }
-
-    /* ── EXPERIENCE ──────────────────────────────────── */
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--border);
-    }
-    .timeline-item:last-child {
-      margin-bottom: 0; padding-bottom: 0;
-      border-bottom: none;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -36px; top: 6px;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(249,115,22,0.5);
-    }
-
-    .timeline-period {
-      font-size: 0.7em;
-      color: var(--accent);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .timeline-role {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1em;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .timeline-org {
-      font-size: 0.82em;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .timeline-desc {
-      font-size: 0.82em;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* ── EDUCATION ───────────────────────────────────── */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .edu-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      transition: all 0.3s;
-    }
-    .edu-card:hover {
-      border-color: rgba(59,130,246,0.3);
-      transform: translateY(-2px);
-    }
-
-    .edu-year {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.6em;
-      color: var(--accent2);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .edu-degree {
-      font-size: 0.82em;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 4px;
-      line-height: 1.4;
-    }
-    .edu-school {
-      font-size: 0.72em;
-      color: var(--muted);
-    }
-
-    /* ── CONTACT ─────────────────────────────────────── */
-    .contact-section {
-      text-align: center;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contact-section .section-title { text-align: center; }
-
-    .contact-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .contact-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 28px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s;
-      min-width: 200px;
-    }
-    .contact-card:hover {
-      border-color: rgba(249,115,22,0.4);
-      background: rgba(249,115,22,0.05);
-      transform: translateY(-3px);
-    }
-
-    .contact-card-icon { font-size: 1.4em; }
-    .contact-card-label {
-      font-size: 0.65em;
-      color: var(--muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .contact-card-value {
-      font-size: 0.82em;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      padding: 32px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-      position: relative;
-      z-index: 2;
-    }
-
-    footer p {
-      font-size: 0.72em;
-      color: var(--muted);
-    }
-
-    footer span { color: var(--accent); }
-
-    /* ── ANIMATIONS ──────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards;
-    }
-    .fade-up:nth-child(1) { animation-delay: 0.1s; }
-    .fade-up:nth-child(2) { animation-delay: 0.25s; }
-    .fade-up:nth-child(3) { animation-delay: 0.4s; }
-    .fade-up:nth-child(4) { animation-delay: 0.55s; }
-    .fade-up:nth-child(5) { animation-delay: 0.7s; }
-
-    /* ── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 100px 20px 60px; }
-      section { padding: 60px 20px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .project-card.featured { grid-column: span 1; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
-    }
-  </style>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Joseph ABANAM | Circuit &amp; Stream</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-cyan { box-shadow: 0 0 15px rgba(0, 229, 255, 0.15); }
+        .glow-cyan-strong:hover { box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+        .blueprint-grid {
+            background-image: linear-gradient(to right, rgba(232, 234, 240, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(232, 234, 240, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .circuit-line {
+            background: linear-gradient(90deg, transparent, #00daf3, transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-highest": "#32343e",
+                        "inverse-primary": "#006875",
+                        "on-secondary-fixed": "#341100",
+                        "primary-fixed-dim": "#00daf3",
+                        "background": "#11131c",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-primary": "#00363d",
+                        "inverse-on-surface": "#2e3039",
+                        "grid-line": "rgba(232, 234, 240, 0.05)",
+                        "on-tertiary": "#002e6a",
+                        "on-background": "#e1e1ee",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-secondary-container": "#4a1c00",
+                        "text-primary": "#E8EAF0",
+                        "surface-container-high": "#272a33",
+                        "secondary-fixed-dim": "#ffb690",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1d1f28",
+                        "on-primary-fixed": "#001f24",
+                        "surface-container-lowest": "#0b0e16",
+                        "surface-bright": "#373942",
+                        "surface-tint": "#00daf3",
+                        "primary-fixed": "#9cf0ff",
+                        "on-primary-container": "#00626e",
+                        "secondary-container": "#ec6a06",
+                        "surface": "#11131c",
+                        "secondary": "#ffb690",
+                        "on-tertiary-container": "#0055b8",
+                        "on-surface-variant": "#bac9cc",
+                        "surface-container-low": "#191b24",
+                        "on-surface": "#e1e1ee",
+                        "primary-container": "#00e5ff",
+                        "outline": "#849396",
+                        "outline-variant": "#3b494c",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#32343e",
+                        "surface-dim": "#11131c",
+                        "text-secondary": "#7A8399",
+                        "on-secondary": "#552100",
+                        "tertiary": "#e7ecff",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#001a42",
+                        "secondary-fixed": "#ffdbca",
+                        "tertiary-container": "#bdd0ff",
+                        "surface-charcoal": "#12141D",
+                        "inverse-surface": "#e1e1ee",
+                        "primary": "#c3f5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "label-code": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "label-code": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
 </head>
-<body>
-
-<!-- CURSOR GLOW -->
-<div class="cursor-glow" id="cursor"></div>
-
-<!-- ── NAV ────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-logo">JAE</div>
-  <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#experience">Expérience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- ── HERO ───────────────────────────────────────────── -->
-<div class="hero">
-  <div class="orbe2"></div>
-  <div class="hero-content">
-    <div class="hero-tag fade-up">Disponible — Lomé, Togo 🇹🇬</div>
-    <h1 class="fade-up">
-      <span class="name-first">Essowasinam<br/>Joseph</span><br/>
-      <span class="name-last">ABANAM</span>
-    </h1>
-    <p class="hero-subtitle fade-up">
-      Ingénieur Génie Électrique · <span>Data Engineer</span> · Enseignant
-    </p>
-    <div class="hero-badges fade-up">
-      <span class="badge">⚡ ESP32 / Arduino</span>
-      <span class="badge">📡 IoT & MQTT</span>
-      <span class="badge">📊 InfluxDB · Grafana</span>
-      <span class="badge">🐍 Python · PyMongo</span>
-      <span class="badge">🗄️ MongoDB · SQL</span>
-      <span class="badge">🤖 Machine Learning</span>
-      <span class="badge">🎓 Master Big Data</span>
-    </div>
-    <div class="hero-cta fade-up">
-      <a href="#projects" class="btn-primary">Voir mes projets →</a>
-      <a href="https://github.com/JosephLaPaix" target="_blank" class="btn-secondary">🐙 GitHub</a>
-    </div>
-  </div>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container blueprint-grid min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-grid-line shadow-[0_0_15px_rgba(0,229,255,0.15)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">
+                TECH_ENGINEER_OS
+            </div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1" href="#projects">Projects</a>
+<a class="font-label-caps text-label-caps text-text-secondary hover:text-primary transition-colors" href="#stack">Hardware</a>
+<a class="font-label-caps text-label-caps text-text-secondary hover:text-primary transition-colors" href="#about">Data Architecture</a>
+<a class="font-label-caps text-label-caps text-text-secondary hover:text-primary transition-colors" href="#contact">Contact</a>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 font-label-caps text-label-caps rounded-lg active:scale-95 transition-transform hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                    Hire Me
+                </button>
 </div>
-
-<!-- ── ABOUT ──────────────────────────────────────────── -->
-<section id="about">
-  <div class="section-label">01 — À propos</div>
-  <h2 class="section-title">Un profil rare au<br/>carrefour de l'électronique<br/>et de la data</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        Né à <strong>Sokodé</strong>, formé à Tsévié puis à Lomé, je suis aujourd'hui
-        <strong>enseignant en Génie Électronique au LETP Aného-Glidji</strong> et
-        <strong>étudiant en Master Big Data à l'UCAO-UUT</strong> — les deux en même temps.
-      </p>
-      <p>
-        Ma particularité : je ne sépare pas le hardware du software. Là où d'autres
-        data engineers ne voient que des fichiers CSV, je vois des capteurs, des microcontrôleurs
-        et des signaux physiques à transformer en données exploitables.
-      </p>
-      <p>
-        Avec l'<strong>ESP32</strong>, je collecte. Avec <strong>MQTT</strong>, je transporte.
-        Avec <strong>Python + InfluxDB</strong>, je stocke. Avec <strong>Grafana</strong>,
-        je visualise. Et avec le <strong>Machine Learning</strong>, j'anticipe.
-      </p>
-      <p>
-        Mon ambition : construire des solutions data concrètes pour les problématiques
-        africaines — énergie, agriculture, santé, éducation.
-      </p>
-    </div>
-    <div class="about-stats">
-      <div class="stat-card">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Projets IoT réalisés</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Métriques temps réel / PZEM</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Missions biométriques nationales</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2026</div>
-        <div class="stat-label">Master Big Data en cours</div>
-      </div>
-    </div>
-  </div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">sensors</span>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-stack-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 space-y-stack-md">
+<div class="flex items-center space-x-unit">
+<span class="w-3 h-3 bg-primary-fixed-dim rounded-full animate-pulse"></span>
+<span class="font-label-code text-label-code text-primary tracking-widest">SYSTEM STATUS: ONLINE</span>
+</div>
+<h1 class="font-display-lg text-[48px] md:text-display-lg leading-tight">
+                        Essowasinam Joseph <span class="text-primary-fixed-dim">ABANAM</span>
+</h1>
+<p class="font-headline-md text-headline-md text-text-secondary">
+                        Ingénieur Génie Électrique · Data Engineer · Enseignant
+                    </p>
+<div class="flex flex-wrap gap-2 pt-4">
+<span class="px-3 py-1 border border-primary/30 bg-primary/5 font-label-code text-label-code text-primary">ESP32 / Arduino</span>
+<span class="px-3 py-1 border border-primary/30 bg-primary/5 font-label-code text-label-code text-primary">IoT &amp; MQTT</span>
+<span class="px-3 py-1 border border-primary/30 bg-primary/5 font-label-code text-label-code text-primary">InfluxDB · Grafana</span>
+<span class="px-3 py-1 border border-primary/30 bg-primary/5 font-label-code text-label-code text-primary">Machine Learning</span>
+</div>
+</div>
+<div class="lg:col-span-5 relative mt-12 lg:mt-0">
+<div class="aspect-square bg-surface-container-low border border-grid-line rounded-xl p-6 relative overflow-hidden flex flex-col justify-center items-center">
+<!-- IoT Pipeline Visualization -->
+<div class="w-full space-y-6 relative z-10">
+<div class="flex justify-between items-center">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border border-primary bg-background flex items-center justify-center text-primary glow-cyan">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<span class="mt-2 font-label-code text-[10px]">SENSOR</span>
+</div>
+<div class="flex-grow h-px bg-primary/30 relative">
+<div class="absolute top-1/2 left-0 w-2 h-2 bg-primary rounded-full -translate-y-1/2 animate-[ping_2s_infinite]"></div>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border border-primary bg-background flex items-center justify-center text-primary glow-cyan">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<span class="mt-2 font-label-code text-[10px]">ESP32</span>
+</div>
+<div class="flex-grow h-px bg-primary/30"></div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border border-primary bg-background flex items-center justify-center text-primary glow-cyan">
+<span class="material-symbols-outlined">router</span>
+</div>
+<span class="mt-2 font-label-code text-[10px]">MQTT</span>
+</div>
+</div>
+<div class="flex justify-center items-center space-x-12">
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-full border border-secondary bg-background flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">database</span>
+</div>
+<span class="mt-2 font-label-code text-[10px]">INFLUXDB</span>
+</div>
+<div class="w-12 h-px bg-secondary/30"></div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-full border border-secondary bg-background flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<span class="mt-2 font-label-code text-[10px]">ML CORE</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ── SKILLS ─────────────────────────────────────────── -->
-<section id="skills" class="skills-section" style="max-width:100%; padding: 100px 40px;">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div class="section-label">02 — Compétences</div>
-    <h2 class="section-title">Stack technique</h2>
-    <div class="skills-grid">
-
-      <div class="skill-group">
-        <div class="skill-group-icon">📡</div>
-        <div class="skill-group-title">IoT & Systèmes Embarqués</div>
-        <div class="skill-tags">
-          <span class="skill-tag">ESP32</span>
-          <span class="skill-tag">Arduino</span>
-          <span class="skill-tag">Raspberry Pi</span>
-          <span class="skill-tag">PZEM-004T</span>
-          <span class="skill-tag">DHT11/22</span>
-          <span class="skill-tag">MQTT</span>
-          <span class="skill-tag">Modbus RTU</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-icon">📊</div>
-        <div class="skill-group-title">Data Engineering</div>
-        <div class="skill-tags">
-          <span class="skill-tag blue">Python</span>
-          <span class="skill-tag blue">paho-mqtt</span>
-          <span class="skill-tag blue">Pandas</span>
-          <span class="skill-tag blue">InfluxDB</span>
-          <span class="skill-tag blue">MongoDB</span>
-          <span class="skill-tag blue">PostgreSQL</span>
-          <span class="skill-tag blue">Grafana</span>
-          <span class="skill-tag blue">FastAPI</span>
-          <span class="skill-tag blue">Streamlit</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-icon">🤖</div>
-        <div class="skill-group-title">Machine Learning</div>
-        <div class="skill-tags">
-          <span class="skill-tag cyan">scikit-learn</span>
-          <span class="skill-tag cyan">Détection anomalies</span>
-          <span class="skill-tag cyan">Séries temporelles</span>
-          <span class="skill-tag cyan">NumPy</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-icon">⚡</div>
-        <div class="skill-group-title">Génie Électrique</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Systèmes PV</span>
-          <span class="skill-tag">Circuits PCB (CNC)</span>
-          <span class="skill-tag">PLC / Automates</span>
-          <span class="skill-tag">Impression 3D</span>
-          <span class="skill-tag">GPS embarqués</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-icon">💻</div>
-        <div class="skill-group-title">Développement</div>
-        <div class="skill-tags">
-          <span class="skill-tag">C / C++</span>
-          <span class="skill-tag">HTML / CSS</span>
-          <span class="skill-tag">Git & GitHub</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Jupyter</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-icon">👨‍🏫</div>
-        <div class="skill-group-title">Enseignement & Communication</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Génie Électronique</span>
-          <span class="skill-tag">Pédagogie technique</span>
-          <span class="skill-tag">Français (courant)</span>
-          <span class="skill-tag">Anglais (intermédiaire)</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<!-- Stats Section -->
+<section class="border-y border-grid-line bg-surface-container-lowest/50 py-12 mb-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div>
+<div class="font-headline-lg text-headline-lg text-primary">5+</div>
+<div class="font-label-caps text-label-caps text-text-secondary mt-2">IoT PROJECTS</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-primary">12</div>
+<div class="font-label-caps text-label-caps text-text-secondary mt-2">REAL-TIME METRICS</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-primary">2</div>
+<div class="font-label-caps text-label-caps text-text-secondary mt-2">NATIONAL MISSIONS</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-primary">2026</div>
+<div class="font-label-caps text-label-caps text-text-secondary mt-2">MASTER BIG DATA</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ── PROJECTS ───────────────────────────────────────── -->
-<section id="projects">
-  <div class="section-label">03 — Projets</div>
-  <h2 class="section-title">Ce que j'ai construit</h2>
-  <div class="projects-grid">
-
-    <!-- PZEM featured -->
-    <div class="project-card featured">
-      <div class="project-header">
-        <div class="project-icon">⚡</div>
-        <span class="project-status status-wip">En cours</span>
-      </div>
-      <div class="project-title">Smart Energy Monitor — 2× PZEM-004T + ML</div>
-      <div class="project-desc">
-        Système de monitoring énergétique bi-circuit en temps réel. 12 métriques électriques
-        (tension, courant, puissance, énergie, fréquence, cos φ) collectées par 2 PZEM-004T v3.0
-        via Modbus RTU, transmises par ESP32 en WiFi, stockées dans InfluxDB et visualisées
-        sur Grafana. Module ML de détection d'anomalies électriques intégré.
-      </div>
-      <div class="project-pipeline">
-        PZEM×2 → ESP32 → WiFi → MQTT → Python → InfluxDB → Grafana + Anomaly Detection
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag">ESP32</span>
-        <span class="skill-tag">PZEM-004T</span>
-        <span class="skill-tag">Modbus RTU</span>
-        <span class="skill-tag blue">Python</span>
-        <span class="skill-tag blue">InfluxDB</span>
-        <span class="skill-tag blue">Grafana</span>
-        <span class="skill-tag cyan">scikit-learn</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-        <span style="font-size:0.7em; color:var(--muted);">IoT · Big Data · ML</span>
-      </div>
-    </div>
-
-    <!-- DHT11 -->
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🌡️</div>
-        <span class="project-status status-live">Terminé</span>
-      </div>
-      <div class="project-title">Monitoring Température & Humidité</div>
-      <div class="project-desc">
-        Pipeline IoT complet DHT11 → ESP32 → MQTT → Python → InfluxDB → Grafana.
-        Dashboard temps réel avec rafraîchissement automatique toutes les 30 secondes.
-        Premier projet Data Engineering publié sur GitHub.
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag">ESP32</span>
-        <span class="skill-tag">DHT11</span>
-        <span class="skill-tag blue">Python</span>
-        <span class="skill-tag blue">InfluxDB</span>
-        <span class="skill-tag blue">Grafana</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix/esp32-iot-monitoring" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-      </div>
-    </div>
-
-    <!-- MongoDB TP -->
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🗄️</div>
-        <span class="project-status status-live">Terminé</span>
-      </div>
-      <div class="project-title">TP MongoDB — Automatisation Big Data</div>
-      <div class="project-desc">
-        Application complète d'automatisation MongoDB avec Python. API FastAPI + interface
-        Streamlit. CRUD, agrégations, import CSV avec déduplication, archivage automatique,
-        promotions conditionnelles. Déployé avec Docker.
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag blue">Python</span>
-        <span class="skill-tag blue">MongoDB</span>
-        <span class="skill-tag blue">FastAPI</span>
-        <span class="skill-tag blue">Streamlit</span>
-        <span class="skill-tag">Docker</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-      </div>
-    </div>
-
-    <!-- Domotique -->
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🏠</div>
-        <span class="project-status status-live">Terminé</span>
-      </div>
-      <div class="project-title">Domotique IoT</div>
-      <div class="project-desc">
-        Système domotique connecté contrôlable à distance via smartphone.
-        Automatisation de l'éclairage, des prises et des équipements électriques.
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag">ESP32</span>
-        <span class="skill-tag">Arduino</span>
-        <span class="skill-tag blue">Python</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-      </div>
-    </div>
-
-    <!-- Biométrique -->
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">👆</div>
-        <span class="project-status status-live">Terminé</span>
-      </div>
-      <div class="project-title">Système de Présence Biométrique</div>
-      <div class="project-desc">
-        Suivi des employés par empreinte digitale avec base de données et interface
-        de reporting. Gestion des présences, absences et retards automatisée.
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag">Arduino</span>
-        <span class="skill-tag blue">Python</span>
-        <span class="skill-tag blue">SQL</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-      </div>
-    </div>
-
-    <!-- Toise -->
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">📏</div>
-        <span class="project-status status-live">Terminé</span>
-      </div>
-      <div class="project-title">Toise IoT</div>
-      <div class="project-desc">
-        Mesure automatique de la taille et du poids avec affichage sur écran embarqué,
-        application Android et interface PC. Synchronisation en temps réel via Bluetooth/WiFi.
-      </div>
-      <div class="project-tech">
-        <span class="skill-tag">ESP32</span>
-        <span class="skill-tag">Arduino</span>
-        <span class="skill-tag blue">Python</span>
-        <span class="skill-tag">HTML/CSS</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/JosephLaPaix" target="_blank" class="project-link">
-          Voir sur GitHub →
-        </a>
-      </div>
-    </div>
-
-  </div>
+<!-- About Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-stack-lg" id="about">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<span class="font-label-code text-label-code text-primary block mb-4">// 01 — À PROPOS</span>
+<h2 class="font-headline-lg text-headline-lg leading-tight">Un profil rare au carrefour de l'électronique et de la data</h2>
+</div>
+<div class="md:col-span-8 bg-surface-container p-gutter rounded-xl border border-grid-line">
+<p class="font-body-lg text-body-lg text-on-surface mb-6">
+                        Ma particularité : je ne sépare pas le hardware du software. Là où d'autres data engineers ne voient que des fichiers CSV, je vois des capteurs, des microcontrôleurs et des signaux physiques à transformer en données exploitables.
+                    </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-md text-text-secondary font-body-md">
+<div class="flex items-start space-x-unit">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Enseignant en Génie Électronique au LETP Aného-Glidji.</span>
+</div>
+<div class="flex items-start space-x-unit">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Étudiant en Master Big Data à l'UCAO-UUT.</span>
+</div>
+<div class="flex items-start space-x-unit">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Expertise en collecte de données PZEM/ESP32.</span>
+</div>
+<div class="flex items-start space-x-unit">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Solutions data pour l'énergie et l'agriculture.</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ── EXPERIENCE ─────────────────────────────────────── -->
-<section id="experience" style="background:var(--bg2); max-width:100%; padding:100px 40px;">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div class="section-label">04 — Expérience</div>
-    <h2 class="section-title">Parcours professionnel</h2>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-period">Déc. 2024 — à nos jours</div>
-        <div class="timeline-role">Enseignant en Génie Électronique</div>
-        <div class="timeline-org">LETP Aného-Glidji · Aného, Togo</div>
-        <div class="timeline-desc">
-          Enseignement du Génie Électronique suite au concours national d'enseignement
-          technique réussi en décembre 2024. Formation des élèves en électronique,
-          systèmes embarqués et programmation.
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-period">Déc. 2024 — à nos jours</div>
-        <div class="timeline-role">Agent Technique & Superviseur TIC</div>
-        <div class="timeline-org">INSEED · Lomé–Cinkassé, Togo</div>
-        <div class="timeline-desc">
-          Reconditionnement, réparation et installation des kits biométriques
-          pour l'établissement des cartes biométriques e_id au Togo.
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-period">Fév. 2023 — Juin 2023</div>
-        <div class="timeline-role">Technicien Biométrique</div>
-        <div class="timeline-org">SNEDAI · Togo</div>
-        <div class="timeline-desc">
-          Reconditionnement, réparation et installation des kits biométriques
-          pour les cartes d'électeurs au Togo.
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-period">Sep. 2019 — Août 2020</div>
-        <div class="timeline-role">Observateur Électoral National</div>
-        <div class="timeline-org">CRETA · Lomé, Togo</div>
-        <div class="timeline-desc">
-          Observation nationale dans le cadre de l'élection présidentielle
-          pour le compte de l'organisation.
-        </div>
-      </div>
-
-    </div>
-  </div>
+<!-- Technical Stack -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-stack-lg" id="stack">
+<div class="mb-gutter flex justify-between items-end">
+<div>
+<span class="font-label-code text-label-code text-primary block mb-4">// 02 — COMPÉTENCES</span>
+<h2 class="font-headline-lg text-headline-lg">Stack Technique</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- IoT Group -->
+<div class="p-6 bg-surface-container-low border border-grid-line hover:border-primary transition-colors group">
+<div class="w-10 h-10 mb-4 flex items-center justify-center bg-primary/10 text-primary rounded-lg group-hover:glow-cyan">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">IoT &amp; Embedded</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">ESP32</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Arduino</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">PZEM-004T</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">MQTT</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Modbus RTU</span>
+</div>
+</div>
+<!-- Data Group -->
+<div class="p-6 bg-surface-container-low border border-grid-line hover:border-primary transition-colors group">
+<div class="w-10 h-10 mb-4 flex items-center justify-center bg-primary/10 text-primary rounded-lg group-hover:glow-cyan">
+<span class="material-symbols-outlined">database</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Data Engineering</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Python</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">InfluxDB</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Grafana</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">FastAPI</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Docker</span>
+</div>
+</div>
+<!-- ML Group -->
+<div class="p-6 bg-surface-container-low border border-grid-line hover:border-primary transition-colors group">
+<div class="w-10 h-10 mb-4 flex items-center justify-center bg-primary/10 text-primary rounded-lg group-hover:glow-cyan">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Machine Learning</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">scikit-learn</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Anomaly Detection</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Time Series</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">NumPy</span>
+</div>
+</div>
+<!-- EE Group -->
+<div class="p-6 bg-surface-container-low border border-grid-line hover:border-primary transition-colors group">
+<div class="w-10 h-10 mb-4 flex items-center justify-center bg-primary/10 text-primary rounded-lg group-hover:glow-cyan">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Electrical Eng.</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">Photovoltaics</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">PCB Design</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">PLC</span>
+<span class="px-2 py-1 bg-surface-container-highest font-label-code text-[12px] text-on-surface-variant">3D Printing</span>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ── EDUCATION ──────────────────────────────────────── -->
-<section id="education">
-  <div class="section-label">05 — Formation</div>
-  <h2 class="section-title">Cursus académique</h2>
-  <div class="edu-grid">
-
-    <div class="edu-card">
-      <div class="edu-year">2026</div>
-      <div class="edu-degree">Master 1 Big Data — ESI (en cours)</div>
-      <div class="edu-school">UCAO-UUT · Lomé, Togo</div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-year">2022</div>
-      <div class="edu-degree">Licence Professionnelle Génie Électrique</div>
-      <div class="edu-school">École Polytechnique de Lomé (EPL-UL)</div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-year">2018</div>
-      <div class="edu-degree">BAC II — Série F2 (Électronique)</div>
-      <div class="edu-school">ISSET · Tsévié, Togo</div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-year">2021</div>
-      <div class="edu-degree">Dimensionnement & Maintenance PV</div>
-      <div class="edu-school">JRDR · Tsévié, Togo</div>
-    </div>
-
-  </div>
+<!-- Featured Project -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-stack-lg" id="projects">
+<div class="mb-gutter">
+<span class="font-label-code text-label-code text-primary block mb-4">// 03 — PROJET PHARE</span>
+<h2 class="font-headline-lg text-headline-lg">Smart Energy Monitor</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter bg-surface-container-high rounded-xl overflow-hidden border border-grid-line">
+<div class="lg:col-span-5 h-[400px] relative">
+<img alt="Electrical panel with sensors" class="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 transition-all duration-700" data-alt="A macro photograph of an electrical control panel with intricate wiring, circuit breakers, and small digital sensor displays. The lighting is high-tech with blue and cyan glows reflecting off copper terminals. The atmosphere is industrial and technical, suggesting precision engineering and real-time monitoring systems in a modern facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPWZD7_U1AJVd-gJQpsBfHBiLYR_sSEoJcur_5N2KU6joNgi_fAsSRFZB7posRkvvFf80X8TeqLOltujH8W7FT3dn46JKxlZLatYds4Lt-xMnRCDJTMcJZJ9nAycM3jE7gLb9ck1gl2N4uq1PyGg6S1ref2yWL5vGz0IOrW1BsgpXOI22E5dOn5wymHp6R7oG2-vO9h0ArhnUqI1BrpEsxRhIUf4nSbYDWZh_9cXL4vWmqW-a0Yc82RtL0pAvVKhIuOqRjwwyryXx0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
+<div class="absolute bottom-6 left-6 flex space-x-2">
+<span class="px-2 py-1 bg-primary text-on-primary font-label-code text-[10px]">REAL-TIME</span>
+<span class="px-2 py-1 bg-secondary text-on-secondary font-label-code text-[10px]">ACTIVE</span>
+</div>
+</div>
+<div class="lg:col-span-7 p-gutter flex flex-col justify-between">
+<div>
+<div class="flex items-center space-x-2 mb-4">
+<span class="font-label-code text-[12px] text-primary">2× PZEM-004T + ESP32 + ML</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface mb-6">
+                            Système de monitoring énergétique bi-circuit en temps réel. Analyse de 12 métriques électriques (tension, courant, puissance, fréquence, cos φ) transmises via MQTT vers un pipeline InfluxDB/Grafana avec détection d'anomalies intégrée.
+                        </p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-stack-md mb-8">
+<div class="border-l border-primary/30 pl-4">
+<span class="block font-label-caps text-[10px] text-text-secondary">INPUTS</span>
+<span class="font-label-code text-primary">12 Metrics</span>
+</div>
+<div class="border-l border-primary/30 pl-4">
+<span class="block font-label-caps text-[10px] text-text-secondary">PROTOCOL</span>
+<span class="font-label-code text-primary">Modbus RTU</span>
+</div>
+<div class="border-l border-primary/30 pl-4">
+<span class="block font-label-caps text-[10px] text-text-secondary">SECURITY</span>
+<span class="font-label-code text-primary">Anomaly Det.</span>
+</div>
+</div>
+</div>
+<div class="flex space-x-gutter">
+<a class="flex items-center space-x-2 text-primary font-label-caps hover:translate-x-1 transition-transform" href="https://github.com/JosephLaPaix" target="_blank">
+<span>EXPLORE CODE</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<span class="font-label-code text-[12px] text-text-secondary self-center opacity-50">IoT · Big Data · ML</span>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ── CONTACT ────────────────────────────────────────── -->
-<section id="contact" class="contact-section" style="max-width:100%; padding:100px 40px;">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div class="section-label" style="justify-content:center;">06 — Contact</div>
-    <h2 class="section-title">Travaillons ensemble</h2>
-    <div class="contact-grid">
-
-      <a href="mailto:abanamjo2@gmail.com" class="contact-card">
-        <div class="contact-card-icon">✉️</div>
-        <div>
-          <div class="contact-card-label">Email</div>
-          <div class="contact-card-value">abanamjo2@gmail.com</div>
-        </div>
-      </a>
-
-      <a href="https://wa.me/22898464143" target="_blank" class="contact-card">
-        <div class="contact-card-icon">💬</div>
-        <div>
-          <div class="contact-card-label">WhatsApp</div>
-          <div class="contact-card-value">+228 98 46 41 43</div>
-        </div>
-      </a>
-
-      <a href="tel:+22892182435" class="contact-card">
-        <div class="contact-card-icon">📞</div>
-        <div>
-          <div class="contact-card-label">Appel</div>
-          <div class="contact-card-value">+228 92 18 24 35</div>
-        </div>
-      </a>
-
-      <a href="https://github.com/abanam-joseph" target="_blank" class="contact-card">
-        <div class="contact-card-icon">🐙</div>
-        <div>
-          <div class="contact-card-label">GitHub</div>
-          <div class="contact-card-value">ABANAM Joseph</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
+<!-- CTA Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg" id="contact">
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-stack-lg text-center relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label-code text-label-code text-primary block mb-4 uppercase tracking-[0.3em]">INITIATE CONNECTION</span>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg mb-8">Travaillons ensemble</h2>
+<div class="flex flex-col md:flex-row justify-center items-center gap-gutter">
+<a class="w-full md:w-auto px-8 py-4 bg-primary-container text-on-primary-container font-label-caps rounded-lg hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] transition-all flex items-center justify-center space-x-3" href="mailto:abanamjo2@gmail.com">
+<span class="material-symbols-outlined">mail</span>
+<span>EMAIL ME</span>
+</a>
+<a class="w-full md:w-auto px-8 py-4 border border-primary/30 text-primary font-label-caps rounded-lg hover:bg-primary/10 transition-all flex items-center justify-center space-x-3" href="https://wa.me/22898464143" target="_blank">
+<span class="material-symbols-outlined">chat</span>
+<span>WHATSAPP</span>
+</a>
+</div>
+</div>
+<!-- Background decoration -->
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[160px]">sensors</span>
+</div>
+</div>
 </section>
-
-<!-- ── FOOTER ─────────────────────────────────────────── -->
-<footer>
-  <p>© 2026 <span>ABANAM Essowasinam Joseph</span> · Lomé, Togo 🇹🇬</p>
-  <p>Ingénieur Génie Électrique · Data Engineer · Enseignant</p>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-grid-line">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-mobile py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-label-caps text-label-caps text-secondary">PRECISION_ENGINEERING_LOG</div>
+<p class="font-label-code text-label-code text-text-secondary max-w-sm">
+                    Bridging physical systems and data intelligence. <br/>Lomé, Togo 🇹🇬
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<a class="block font-label-code text-label-code text-text-secondary hover:text-primary transition-colors" href="https://github.com/JosephLaPaix">GitHub</a>
+<a class="block font-label-code text-label-code text-text-secondary hover:text-primary transition-colors" href="#">LinkedIn</a>
+</div>
+<div class="space-y-2">
+<a class="block font-label-code text-label-code text-text-secondary hover:text-primary transition-colors" href="#">Terminal</a>
+<a class="block font-label-code text-label-code text-text-secondary hover:text-primary transition-colors" href="#">Documentation</a>
+</div>
+</div>
+<div class="md:col-span-2 pt-8 border-t border-grid-line/50 flex justify-between items-center">
+<div class="font-label-code text-[12px] text-text-secondary">© 2026 ABANAM ESSOWASINAM JOSEPH</div>
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="font-label-code text-[12px] text-text-secondary uppercase">System Operational</span>
+</div>
+</div>
+</div>
 </footer>
-
+<!-- SideNavBar (Mobile Bottom) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-md border-t border-grid-line z-50">
+<div class="flex justify-around items-center h-16">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-code text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center text-text-secondary" href="#projects">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-label-code text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center text-text-secondary" href="#stack">
+<span class="material-symbols-outlined">database</span>
+<span class="font-label-code text-[10px]">Stack</span>
+</a>
+<a class="flex flex-col items-center text-text-secondary" href="#contact">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-code text-[10px]">Connect</span>
+</a>
+</div>
+</div>
 <script>
-  // Cursor glow
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-  });
+        // Micro-interaction for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-  // Intersection Observer pour animations au scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.skill-group, .project-card, .timeline-item, .edu-card, .stat-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
+        // Interactive "System Online" console log
+        console.log("%c SYSTEM_OS_INIT: Joseph ABANAM Portfolio Loaded", "color: #00daf3; font-weight: bold; font-family: monospace;");
+        console.log("%c Status: Connected to local grid", "color: #7A8399; font-family: monospace;");
+    </script>
+</body></html>
