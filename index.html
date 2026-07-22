@@ -1,434 +1,930 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="fr"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>JOSEPH.EXE | Portfolio Haute Performance</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-secondary-fixed-variant": "#00458f",
-                        "surface-dim": "#12121d",
-                        "outline": "#859398",
-                        "surface-container-high": "#292935",
-                        "tertiary": "#e5d9ff",
-                        "on-primary-fixed": "#001f27",
-                        "background": "#0f0f1a",
-                        "on-secondary-container": "#002959",
-                        "surface": "#12121d",
-                        "tertiary-container": "#cbb8ff",
-                        "primary-fixed": "#b4ebff",
-                        "on-secondary-fixed": "#001b3f",
-                        "surface-container-low": "#1b1a26",
-                        "surface-container-highest": "#343440",
-                        "on-primary-fixed-variant": "#004e5f",
-                        "surface-container-lowest": "#0d0d18",
-                        "tertiary-fixed-dim": "#cfbdff",
-                        "on-tertiary-container": "#5e00e4",
-                        "on-surface-variant": "#bbc9cf",
-                        "primary-fixed-dim": "#3cd7ff",
-                        "on-primary-container": "#00586b",
-                        "secondary-container": "#438fff",
-                        "on-background": "#e3e0f1",
-                        "on-tertiary": "#3a0093",
-                        "outline-variant": "#3c494e",
-                        "inverse-surface": "#e3e0f1",
-                        "on-error-container": "#ffdad6",
-                        "on-tertiary-fixed": "#22005d",
-                        "primary-container": "#00d4ff",
-                        "error-container": "#93000a",
-                        "surface-container": "#1f1e2a",
-                        "on-tertiary-fixed-variant": "#5300cc",
-                        "inverse-on-surface": "#302f3b",
-                        "surface-variant": "#343440",
-                        "on-surface": "#e3e0f1",
-                        "secondary-fixed-dim": "#abc7ff",
-                        "primary": "#a8e8ff",
-                        "on-error": "#690005",
-                        "secondary-fixed": "#d7e3ff",
-                        "secondary": "#abc7ff",
-                        "inverse-primary": "#00677e",
-                        "on-secondary": "#002f65",
-                        "surface-tint": "#3cd7ff",
-                        "on-primary": "#003642",
-                        "error": "#ffb4ab",
-                        "tertiary-fixed": "#e9ddff",
-                        "surface-bright": "#383845"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin_mobile": "16px",
-                        "gutter": "24px",
-                        "container_max_width": "1200px",
-                        "base_unit": "8px",
-                        "margin_desktop": "48px",
-                        "section_gap": "80px"
-                    },
-                    "fontFamily": {
-                        "display-lg-mobile": ["Inter"],
-                        "label-caps": ["JetBrains Mono"],
-                        "headline-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "display-lg": ["Inter"],
-                        "body-md": ["Inter"],
-                        "code-sm": ["JetBrains Mono"]
-                    },
-                    "fontSize": {
-                        "display-lg-mobile": ["36px", {"lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "code-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}]
-                    }
-                },
-            },
-        }
-    </script>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ABANAM Essowasinam Joseph — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-        .glass-panel {
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(168, 232, 255, 0.1);
-        }
-        .neon-border {
-            border: 1px solid transparent;
-            background-image: linear-gradient(rgba(15, 15, 26, 1), rgba(15, 15, 26, 1)), linear-gradient(135deg, #a8e8ff 0%, #00d4ff 100%);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-        .glow-hover:hover {
-            box-shadow: 0 0 20px rgba(168, 232, 255, 0.2);
-        }
-        .timeline-track::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, #a8e8ff, transparent);
-        }
-        body {
-            background-color: #0f0f1a;
-            color: #e3e0f1;
-        }
-    </style>
-</head>
-<body class="selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-md border-b border-outline-variant/30">
-<div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin_desktop py-4">
-<div class="font-display-lg text-headline-md tracking-tighter text-primary dark:text-primary">JOSEPH.EXE</div>
-<div class="hidden md:flex gap-8 items-center">
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#about">Bio</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#skills">Skills</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#projects">Projects</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#career">Career</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#contact">Contact</a>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform cursor-pointer">terminal</span>
-<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:brightness-110 transition-all">Hire Me</button>
-</div>
-</div>
-</nav>
-<!-- SideNavBar (Desktop Only) -->
-<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 w-64 bg-surface-container-lowest/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-lg py-8 px-4 z-40 justify-between">
-<div class="space-y-8">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/50">
-<img alt="Joseph's Professional Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a West African male engineer in a high-tech environment. He is wearing a dark, modern smart-casual shirt. The background is a softly blurred technical laboratory with glowing server racks and blue accent lighting, emphasizing a high-performance cybernetic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD5crKcdJN184Ckpe0UDDUVO_VBqni0Z2VsQscC1Rw9p5jokvoZnhx2MtmBNZDbggW4ZeV5W60LpKI5G-tJfD8WMN77eZyfSvcUXw-aTcootFCB-kxJP-9Vq8RmzA8IKFYF0gBf9ivGkbEFdFXppXT99RmOLmj_kLumUuZLZos067evDSLfr91kcDwRdyaL_sci5UBgwvZvqeHp_qXzOTyiu_gRH8NA36QyUF-xqzmv2x8conyauiIVvv29u-VPZj2pLyOc5Lb65I"/>
-</div>
-<div>
-<h2 class="font-headline-md text-primary text-sm">Joseph</h2>
-<p class="text-on-surface-variant text-[10px] font-label-caps">EE Teacher &amp; Big Data</p>
-</div>
-</div>
-<nav class="space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-r-4 border-primary bg-primary/10 transition-all duration-200" href="#">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-caps text-label-caps">Home</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#skills">
-<span class="material-symbols-outlined">memory</span>
-<span class="font-label-caps text-label-caps">Expertise</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#projects">
-<span class="material-symbols-outlined">code</span>
-<span class="font-label-caps text-label-caps">Code</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#career">
-<span class="material-symbols-outlined">timeline</span>
-<span class="font-label-caps text-label-caps">History</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#contact">
-<span class="material-symbols-outlined">mail</span>
-<span class="font-label-caps text-label-caps">Connect</span>
-</a>
-</nav>
-</div>
-<div class="space-y-4">
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary font-label-caps text-label-caps" href="#">
-<span class="material-symbols-outlined">code_blocks</span>
-                GitHub
-            </a>
-<button class="w-full py-3 bg-surface-container-high border border-outline-variant text-primary font-label-caps text-label-caps rounded-lg hover:bg-primary hover:text-on-primary transition-all">Resume.pdf</button>
-</div>
-</aside>
-<main class="lg:ml-64 mt-20 px-margin_mobile md:px-margin_desktop">
-<!-- Hero Section -->
-<section class="min-h-[819px] flex flex-col justify-center py-section_gap" id="hero">
-<div class="relative">
-<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter mb-4 animate-pulse">
-                    ABANAM <br class="md:hidden"/> Essowasinam Joseph
-                </h1>
-<p class="font-headline-md text-headline-md text-on-surface-variant max-w-2xl mb-8">
-                    Enseignant en Génie Électronique · Étudiant Master Big Data · Passionné IoT
-                </p>
-<div class="flex flex-wrap gap-3 mb-12">
-<span class="px-4 py-1 bg-surface-container-high text-primary border border-primary/30 rounded-full font-label-caps text-label-caps flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">location_on</span> Togo
-                    </span>
-<span class="px-4 py-1 bg-surface-container-high text-primary border border-primary/30 rounded-full font-label-caps text-label-caps">Génie Électrique</span>
-<span class="px-4 py-1 bg-surface-container-high text-primary border border-primary/30 rounded-full font-label-caps text-label-caps">IoT</span>
-<span class="px-4 py-1 bg-surface-container-high text-primary border border-primary/30 rounded-full font-label-caps text-label-caps">Data Engineering</span>
-<span class="px-4 py-1 bg-surface-container-high text-primary border border-primary/30 rounded-full font-label-caps text-label-caps">UCAO-UUT</span>
-</div>
-<div class="flex gap-4">
-<button class="bg-gradient-to-r from-primary to-secondary-container text-on-primary px-8 py-4 rounded-lg font-bold glow-hover transition-all">Explorer mes projets</button>
-<button class="border border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-primary/10 transition-all">Me contacter</button>
-</div>
-</div>
-</section>
-<!-- About Section -->
-<section class="py-section_gap" id="about">
-<div class="grid md:grid-cols-2 gap-12 items-center">
-<div class="glass-panel p-8 rounded-xl border-l-4 border-l-primary">
-<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-3">
-<span class="material-symbols-outlined">person</span> Bio Professionnelle
-                    </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-                        Expert en génie électrique et passionné par les technologies émergentes, je conjugue mon expertise en enseignement technique avec une spécialisation avancée en Big Data et IoT. Mon parcours me permet de faire le pont entre le hardware industriel et les solutions logicielles intelligentes.
-                    </p>
-<p class="font-body-md text-body-md text-on-surface-variant/80">
-                        Ma mission est d'optimiser les systèmes industriels grâce à l'analyse de données en temps réel et de former la prochaine génération de techniciens aux enjeux du numérique.
-                    </p>
-</div>
-<div class="relative h-[400px] rounded-xl overflow-hidden neon-border">
-<img class="w-full h-full object-cover" data-alt="A macro close-up of a high-tech circuit board with glowing electric current paths in cyan. The depth of field is shallow, emphasizing the intricate microchips and copper pathways. The lighting is dark and cinematic, fitting a cyber-technical engineering aesthetic with a cold, professional color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKUxZ3KEsvbdg5DzYTFpKiph0q99eANr69bhZunZcoWeYAkZvPHxr6WeX81Y6XOzjXrvxuI7PNI0TsWE2QrZ41pegkXMXAn10rcnaTr4WZgCi2D9E7K6HuOKQDPNxa7-L_wJcymnfrSstjFFfSIwu-I5-6-H6G8MkXEJq3qphkQauPxfrreLSUSkWc7TX4mIf6TUdaNacD3QzIr9xjHxEMLjlacGCxixRvEa4e0p6sUUqY6qJ1Nr24WDlwL6RXWgB9WEmUYzTVzQ0"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-<div class="absolute bottom-6 left-6">
-<span class="block text-primary font-code-sm text-code-sm uppercase tracking-widest">Technologie</span>
-<span class="text-on-surface font-headline-md text-headline-md">Hardware &amp; Software Synergy</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Skills Section -->
-<section class="py-section_gap" id="skills">
-<div class="flex flex-col items-center mb-16">
-<h2 class="font-headline-md text-display-lg-mobile text-primary mb-2">Expertise Technique</h2>
-<div class="w-24 h-1 bg-primary rounded-full"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Skill 1 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">sensors</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">IoT &amp; Embarqué</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Conception et déploiement de capteurs intelligents. Maîtrise ESP32, Arduino et protocoles de communication IoT (MQTT, LoRa).</p>
-</div>
-<!-- Skill 2 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Python</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Développement de scripts d'automatisation, analyse de données et intégration d'algorithmes de machine learning.</p>
-</div>
-<!-- Skill 3 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">database</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Bases de données</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Gestion et requêtage de structures de données SQL et NoSQL pour l'archivage de flux industriels.</p>
-</div>
-<!-- Skill 4 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">monitoring</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Visualisation</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Création de tableaux de bord interactifs avec Grafana et Power BI pour le pilotage de performance.</p>
-</div>
-<!-- Skill 5 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Génie Électrique</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Maintenance industrielle, installation de systèmes électriques complexes et domotique avancée.</p>
-</div>
-<!-- Skill 6 -->
-<div class="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">school</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Enseignement</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Transmission de savoirs techniques complexes et accompagnement pédagogique d'étudiants en ingénierie.</p>
-</div>
-</div>
-</section>
-<!-- Projects Section -->
-<section class="py-section_gap" id="projects">
-<h2 class="font-headline-md text-headline-md text-primary mb-12 flex items-center gap-4">
-<span class="material-symbols-outlined">rocket_launch</span> Projet Phare
-            </h2>
-<div class="neon-border rounded-xl overflow-hidden grid lg:grid-cols-2 items-center bg-surface-container-lowest">
-<div class="p-10">
-<div class="flex gap-2 mb-6">
-<span class="bg-primary/10 text-primary px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">IoT</span>
-<span class="bg-primary/10 text-primary px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Big Data</span>
-</div>
-<h3 class="font-display-lg text-headline-md text-on-surface mb-4">Système de Monitoring IoT — ESP32 + Grafana</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
-                        Une solution complète d'acquisition et de visualisation de données environnementales en temps réel. Le système utilise des microcontrôleurs ESP32 pour collecter les mesures, transmises via MQTT vers une stack TIG (Telegraf, InfluxDB, Grafana) pour une analyse granulaire.
-                    </p>
-<div class="flex flex-wrap gap-4 mb-8">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span class="text-sm">Temps réel &lt; 100ms</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span class="text-sm">Stockage Time-Series</span>
-</div>
-</div>
-<a class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-bold hover:brightness-110 transition-all" href="#">
-<span class="material-symbols-outlined">code</span>
-                        View on GitHub
-                    </a>
-</div>
-<div class="relative h-full min-h-[400px]">
-<img class="w-full h-full object-cover" data-alt="A sophisticated data visualization dashboard displayed on a high-resolution dark monitor. The dashboard features complex line charts, heatmaps, and digital gauges in neon cyan and blue colors, showing real-time IoT sensor data. The background is a dim, professional office setting with technical gear, creating a high-end data engineering atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7b8cnmsibTHDlM2cnnqs3Zk4D64aJv0YRfwylkYpaFm-7yGm8nCQcrUNafWiAvRxjlUIfwSZRSRiTod7N-rsbnH4Sy4LJqKxCcsZvgCHfKW3YMuh89YX8_no0Bcl7S5j6VMfzFsxgw2dXcIykGGdLyqTm3n-a567AZcmUK7f7NTn7Sw42rwEqrE552u8DMKB46h8YleEfJSIxgjLEOlmdNjMei29lIfb6yF8OSKROBkYs2cHb6JhvFKDEVK-Pft0fr4dp8_PZfFw"/>
-<div class="absolute inset-0 bg-primary/5"></div>
-</div>
-</div>
-</section>
-<!-- Timeline Section -->
-<section class="py-section_gap" id="career">
-<h2 class="font-headline-md text-headline-md text-primary mb-12 flex items-center gap-4">
-<span class="material-symbols-outlined">timeline</span> Parcours Professionnel
-            </h2>
-<div class="relative pl-8 timeline-track space-y-12">
-<!-- Entry 1 -->
-<div class="relative">
-<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_#a8e8ff] z-10"></div>
-<div class="glass-panel p-6 rounded-lg">
-<span class="font-code-sm text-code-sm text-primary mb-2 block">2026 — À venir</span>
-<h3 class="font-headline-md text-headline-md text-on-surface">Master en Big Data &amp; Intelligence Artificielle</h3>
-<p class="text-on-surface-variant mt-2">Spécialisation dans le traitement de flux massifs de données industrielles.</p>
-</div>
-</div>
-<!-- Entry 2 -->
-<div class="relative">
-<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-primary z-10"></div>
-<div class="glass-panel p-6 rounded-lg">
-<span class="font-code-sm text-code-sm text-primary mb-2 block">2025 — Présent</span>
-<h3 class="font-headline-md text-headline-md text-on-surface">Enseignant en Génie Électronique</h3>
-<p class="text-on-surface-variant mt-2">Formation des étudiants aux concepts de base et avancés de l'électronique de puissance et numérique.</p>
-</div>
-</div>
-<!-- Entry 3 -->
-<div class="relative">
-<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-primary z-10"></div>
-<div class="glass-panel p-6 rounded-lg">
-<span class="font-code-sm text-code-sm text-primary mb-2 block">2022</span>
-<h3 class="font-headline-md text-headline-md text-on-surface">Licence en Génie Électrique</h3>
-<p class="text-on-surface-variant mt-2">Obtention du diplôme avec mention. Focus sur les énergies renouvelables et l'automatisation.</p>
-</div>
-</div>
-<!-- Entry 4 -->
-<div class="relative">
-<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-primary z-10"></div>
-<div class="glass-panel p-6 rounded-lg">
-<span class="font-code-sm text-code-sm text-primary mb-2 block">2018</span>
-<h3 class="font-headline-md text-headline-md text-on-surface">Baccalauréat Scientifique</h3>
-<p class="text-on-surface-variant mt-2">Série technique, bases solides en mathématiques et physique appliquée.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Contact Section -->
-<section class="py-section_gap" id="contact">
-<div class="glass-panel p-12 rounded-2xl text-center relative overflow-hidden">
-<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-[80px]"></div>
-<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Prêt à collaborer ?</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-12">
-                    Que ce soit pour un projet IoT, une expertise en data engineering ou une opportunité d'enseignement, discutons de la manière dont je peux apporter de la valeur à votre organisation.
-                </p>
-<div class="flex flex-col md:flex-row justify-center gap-6">
-<a class="flex items-center justify-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-lg font-bold glow-hover transition-all" href="mailto:contact@joseph.exe">
-<span class="material-symbols-outlined">alternate_email</span>
-                        Envoyer un Email
-                    </a>
-<a class="flex items-center justify-center gap-3 border border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-primary/10 transition-all" href="#">
-<span class="material-symbols-outlined">terminal</span>
-                        GitHub Profile
-                    </a>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-section_gap bg-surface-container-lowest border-t border-outline-variant/50">
-<div class="max-w-[1200px] mx-auto px-margin_desktop flex flex-col md:flex-row justify-between items-center gap-base_unit">
-<div class="font-label-caps text-on-surface text-label-caps opacity-80">© 2024 Joseph. Built for the high-performance professional.</div>
-<div class="flex gap-6 font-code-sm text-code-sm text-outline font-label-caps text-label-caps uppercase">
-<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
-<span class="text-primary-fixed-dim">Location: Togo</span>
-</div>
-</div>
-</footer>
-<script>
-        // Smooth Scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+:root {
+  --bordeaux: #800020;
+  --bordeaux-light: #a0002a;
+  --bordeaux-pale: #fff0f3;
+  --or: #C9952A;
+  --bg: #FAFAF8;
+  --bg2: #F3F1EE;
+  --dark: #1C1C1C;
+  --gray: #6B6B6B;
+  --gray-light: #E8E6E2;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
 
-        // Interactive Glow Effect for glass panels
-        const panels = document.querySelectorAll('.glass-panel');
-        panels.forEach(panel => {
-            panel.addEventListener('mousemove', (e) => {
-                const rect = panel.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                panel.style.setProperty('--mouse-x', `${x}px`);
-                panel.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    </script>
-</body></html>
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-light);
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.2em;
+  color: var(--bordeaux);
+  letter-spacing: -0.5px;
+}
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a {
+  font-size: 0.85em;
+  color: var(--gray);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--bordeaux); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px 80px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.hero-inner { width: 100%; }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75em;
+  color: var(--bordeaux);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--bordeaux);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.8em, 6vw, 5.2em);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--bordeaux);
+}
+
+.hero-role {
+  font-size: 1.1em;
+  color: var(--gray);
+  font-weight: 300;
+  margin: 20px 0 36px;
+  max-width: 520px;
+  line-height: 1.6;
+}
+.hero-role strong { color: var(--dark); font-weight: 600; }
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 44px;
+}
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  padding: 6px 14px;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 4px;
+  color: var(--gray);
+  background: var(--white);
+  letter-spacing: 0.3px;
+  transition: all 0.2s;
+}
+.tag:hover { border-color: var(--bordeaux); color: var(--bordeaux); background: var(--bordeaux-pale); }
+
+.hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
+.btn {
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+.btn-main {
+  background: var(--bordeaux);
+  color: var(--white);
+  border: 2px solid var(--bordeaux);
+}
+.btn-main:hover { background: var(--bordeaux-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(128,0,32,0.25); }
+.btn-outline {
+  background: transparent;
+  color: var(--bordeaux);
+  border: 2px solid var(--bordeaux);
+}
+.btn-outline:hover { background: var(--bordeaux-pale); transform: translateY(-2px); }
+
+/* ── SEPARATEUR ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--gray-light);
+  margin: 0;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 80px 48px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.section-alt {
+  background: var(--bg2);
+  padding: 80px 0;
+}
+.section-alt .section-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  color: var(--bordeaux);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 24px; height: 1.5px;
+  background: var(--bordeaux);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.8em, 3.5vw, 2.6em);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--dark);
+  margin-bottom: 48px;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-text p {
+  color: var(--gray);
+  font-size: 0.95em;
+  line-height: 1.95;
+  margin-bottom: 18px;
+}
+.about-text p strong { color: var(--dark); font-weight: 600; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.stat {
+  background: var(--white);
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 20px 16px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.stat:hover { border-color: var(--bordeaux); transform: translateY(-2px); }
+.stat-val {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2em;
+  color: var(--bordeaux);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-lbl { font-size: 0.72em; color: var(--gray); line-height: 1.3; }
+
+/* ── EXPERIENCE TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+/* Ligne verticale style circuit */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--bordeaux) 0px,
+    var(--bordeaux) 8px,
+    transparent 8px,
+    transparent 14px
+  );
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 44px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--gray-light);
+}
+.tl-item:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+
+/* Nœud circuit */
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -36px; top: 5px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2.5px solid var(--bordeaux);
+  box-shadow: 0 0 0 3px rgba(128,0,32,0.12);
+}
+.tl-item.current::before {
+  background: var(--bordeaux);
+}
+
+.tl-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  color: var(--bordeaux);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tl-badge {
+  font-size: 0.85em;
+  background: var(--bordeaux-pale);
+  color: var(--bordeaux);
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+.tl-role {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.15em;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.tl-org {
+  font-size: 0.85em;
+  color: var(--bordeaux);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.tl-desc {
+  font-size: 0.88em;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* ── COMPÉTENCES ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+.skill-group {
+  background: var(--white);
+  border: 1.5px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 26px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.skill-group::after {
+  content: '';
+  position: absolute;
+  top:0; left:0; right:0;
+  height: 3px;
+  background: var(--bordeaux);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.skill-group:hover { border-color: var(--bordeaux); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.skill-group:hover::after { transform: scaleX(1); }
+
+.skill-icon { font-size: 1.6em; margin-bottom: 12px; }
+.skill-name {
+  font-weight: 700;
+  font-size: 0.9em;
+  color: var(--dark);
+  margin-bottom: 14px;
+  letter-spacing: 0.2px;
+}
+.skill-tags { display:flex; flex-wrap:wrap; gap:7px; }
+.skill-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  padding: 3px 9px;
+  background: var(--bg2);
+  border: 1px solid var(--gray-light);
+  border-radius: 3px;
+  color: var(--gray);
+  letter-spacing: 0.2px;
+}
+
+/* ── PROJETS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+}
+.proj-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.25s;
+}
+.proj-card:hover { border-color: var(--bordeaux); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+.proj-card.featured {
+  grid-column: span 2;
+  border-color: var(--bordeaux);
+  background: linear-gradient(135deg, var(--bordeaux-pale) 0%, var(--white) 60%);
+}
+
+.proj-head { display:flex; justify-content:space-between; align-items:flex-start; }
+.proj-icon { font-size: 1.8em; }
+.proj-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.s-live { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.s-wip { background: var(--bordeaux-pale); color: var(--bordeaux); border: 1px solid rgba(128,0,32,0.2); }
+
+.proj-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: var(--dark);
+  line-height: 1.35;
+}
+.proj-desc { font-size: 0.85em; color: var(--gray); line-height: 1.8; flex:1; }
+.proj-pipeline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  color: var(--bordeaux);
+  background: var(--bordeaux-pale);
+  border-left: 3px solid var(--bordeaux);
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.6;
+}
+.proj-tech { display:flex; flex-wrap:wrap; gap:6px; }
+.proj-foot {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:10px;
+  border-top: 1px solid var(--gray-light);
+}
+.proj-link {
+  font-size: 0.8em;
+  color: var(--bordeaux);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+.proj-link:hover { gap: 10px; }
+
+/* ── FORMATION ── */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.edu-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 22px;
+  transition: all 0.25s;
+  border-left: 4px solid var(--gray-light);
+}
+.edu-card:hover { border-left-color: var(--bordeaux); transform: translateX(4px); }
+.edu-year {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.6em;
+  color: var(--bordeaux);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.edu-deg { font-size: 0.85em; font-weight: 600; color: var(--dark); margin-bottom: 4px; line-height: 1.4; }
+.edu-school { font-size: 0.75em; color: var(--gray); }
+
+/* ── CONTACT ── */
+.contact-wrap {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.contact-intro {
+  font-size: 0.95em;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.c-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s;
+  text-align: left;
+}
+.c-card:hover { border-color: var(--bordeaux); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.c-icon { font-size: 1.3em; flex-shrink: 0; }
+.c-lbl { font-size: 0.62em; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+.c-val { font-size: 0.82em; color: var(--dark); font-weight: 600; margin-top: 2px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 32px 48px;
+  font-size: 0.8em;
+}
+footer span { color: var(--bordeaux); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hero-inner > * {
+  opacity: 0;
+  animation: fadeUp 0.65s ease forwards;
+}
+.hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.55s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.7s; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display:none; }
+  .hero, .section { padding-left: 20px; padding-right: 20px; }
+  .section-alt .section-inner { padding: 0 20px; }
+  .about-grid { grid-template-columns: 1fr; gap:40px; }
+  .proj-card.featured { grid-column: span 1; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ABANAM</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Disponible · Lomé, Togo 🇹🇬</div>
+    <h1>Essowasinam<br/>Joseph <em>ABANAM</em></h1>
+    <p class="hero-role">
+      <strong>Ingénieur en Génie Électrique</strong> · Data Engineer · Formateur en IA & Robotique · Enseignant en Électronique.<br/>
+      Je connecte le monde physique à la donnée.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">ESP32 · Arduino</span>
+      <span class="tag">IoT · MQTT</span>
+      <span class="tag">MongoDB</span>
+      <span class="tag">Kafka · Spark</span>
+      <span class="tag">Python · Grafana</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Master Big Data</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-main">Voir mes projets</a>
+      <a href="https://github.com/abanamjoseph" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-label">À propos</div>
+  <h2 class="section-title">L'électronique<br/>rencontre la data</h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Né à <strong>Sokodé</strong>, formé à Tsévié et à Lomé. Aujourd'hui <strong>enseignant en Génie Électronique au LETP Aného-Glidji</strong>, <strong>formateur en IA et Robotique chez CITIL sarl</strong> depuis 2021, et étudiant en <strong>Master Big Data à l'UCAO-UUT</strong> — en cours du soir.</p>
+      <p>Ma particularité : je construis des ponts entre le monde physique et la donnée. Avec l'<strong>ESP32</strong>, je mesure. Avec <strong>MQTT</strong>, je transporte. Avec <strong>Python + InfluxDB</strong>, je stocke. Avec <strong>Grafana</strong>, je visualise. Avec le <strong>ML</strong>, j'anticipe.</p>
+      <p>Mon ambition : concevoir des solutions data intelligentes pour les enjeux africains — énergie, agriculture, santé, éducation.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-val">4+</div><div class="stat-lbl">ans de formation en IA & Robotique</div></div>
+      <div class="stat"><div class="stat-val">12</div><div class="stat-lbl">métriques IoT temps réel</div></div>
+      <div class="stat"><div class="stat-val">13+</div><div class="stat-lbl">projets techniques réalisés</div></div>
+      <div class="stat"><div class="stat-val">M1</div><div class="stat-lbl">Big Data en cours · UCAO-UUT</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<div class="section-alt" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Expérience</div>
+    <h2 class="section-title">Parcours professionnel</h2>
+    <div class="timeline">
+
+      <div class="tl-item current reveal">
+        <div class="tl-period">Déc. 2024 — Présent <span class="tl-badge">EN POSTE</span></div>
+        <div class="tl-role">Enseignant en Génie Électronique</div>
+        <div class="tl-org">LETP Aného-Glidji · Aného, Togo</div>
+        <div class="tl-desc">Enseignement du Génie Électronique suite au concours national d'enseignement technique réussi en décembre 2024. Formation des élèves en électronique, systèmes embarqués et programmation.</div>
+      </div>
+
+      <div class="tl-item current reveal">
+        <div class="tl-period">2021 — Présent <span class="tl-badge">EN POSTE</span></div>
+        <div class="tl-role">Formateur en IA, Robotique & Modélisation-Impression 3D</div>
+        <div class="tl-org">CITIL sarl · Lomé, Togo</div>
+        <div class="tl-desc">Formation en Intelligence Artificielle, Robotique et Impression 3D au sein du Cabinet d'Ingénierie des Technologies et Innovation le Leader. Accompagnement de profils divers vers les métiers du numérique.</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-period">Déc. 2024 — Fév. 2025</div>
+        <div class="tl-role">Agent Technique & Superviseur TIC</div>
+        <div class="tl-org">INSEED · Lomé–Cinkassé, Togo</div>
+        <div class="tl-desc">Reconditionnement, réparation et installation des kits biométriques pour l'établissement des cartes d'électeurs au Togo.</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-period">Fév. 2023 — Juin 2023</div>
+        <div class="tl-role">Technicien Biométrique</div>
+        <div class="tl-org">SNEDAI · Togo</div>
+        <div class="tl-desc">Reconditionnement, réparation et installation des kits biométriques pour les cartes d'électeurs.</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-period">Sep. 2019 — Août 2020</div>
+        <div class="tl-role">Observateur Électoral National</div>
+        <div class="tl-org">CRETA · Lomé, Togo</div>
+        <div class="tl-desc">Observation nationale dans le cadre de l'élection présidentielle togolaise.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- COMPETENCES -->
+<section class="section" id="skills">
+  <div class="section-label">Compétences</div>
+  <h2 class="section-title">Stack technique</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">📡</div>
+      <div class="skill-name">IoT & Systèmes Embarqués</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ESP32</span>
+        <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">Raspberry Pi</span>
+        <span class="skill-tag">PZEM-004T</span>
+        <span class="skill-tag">DHT11</span>
+        <span class="skill-tag">MQTT</span>
+        <span class="skill-tag">Modbus RTU</span>
+        <span class="skill-tag">Réparation électronique</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Big Data & Data Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Apache Kafka</span>
+        <span class="skill-tag">Spark Streaming</span>
+        <span class="skill-tag">Airflow</span>
+        <span class="skill-tag">MinIO</span>
+        <span class="skill-tag">Superset</span>
+        <span class="skill-tag">InfluxDB</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">Bases de Données</div>
+      <div class="skill-tags">
+        <span class="skill-tag">MongoDB ★</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">InfluxDB</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">PyMongo</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">Machine Learning & IA</div>
+      <div class="skill-tags">
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">numpy</span>
+        <span class="skill-tag">KNIME</span>
+        <span class="skill-tag">CRISP-DM</span>
+        <span class="skill-tag">Détection anomalies</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">Développement & Outils</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">LaTeX</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Génie Électrique & Formation</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Systèmes PV</span>
+        <span class="skill-tag">PCB (CNC)</span>
+        <span class="skill-tag">Impression 3D</span>
+        <span class="skill-tag">PLC / Automates</span>
+        <span class="skill-tag">Robotique pédagogique</span>
+        <span class="skill-tag">GPS embarqués</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJETS -->
+<div class="section-alt" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projets</div>
+    <h2 class="section-title">Ce que j'ai construit</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card featured reveal">
+        <div class="proj-head">
+          <div class="proj-icon">⚡</div>
+          <span class="proj-status s-wip">En cours</span>
+        </div>
+        <div class="proj-title">Smart Energy Monitor — 2× PZEM-004T + ESP32 + ML</div>
+        <div class="proj-desc">Système de monitoring énergétique bi-circuit en temps réel. 12 métriques électriques collectées via Modbus RTU, transmises par ESP32, stockées dans InfluxDB et visualisées sur Grafana. Module ML de détection d'anomalies intégré.</div>
+        <div class="proj-pipeline">PZEM×2 → ESP32 → MQTT → Python → InfluxDB → Grafana → ML Anomaly Detection</div>
+        <div class="proj-tech">
+          <span class="skill-tag">ESP32</span><span class="skill-tag">PZEM-004T</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">InfluxDB</span>
+          <span class="skill-tag">Grafana</span><span class="skill-tag">scikit-learn</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a>
+          <span style="font-size:0.72em;color:var(--gray);">IoT · Big Data · ML</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🌊</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">Pipeline Big Data E-Commerce — Olist</div>
+        <div class="proj-desc">Architecture de streaming temps réel sur le dataset Olist (Brésil). Producteurs Kafka, traitement Spark Structured Streaming, stockage PostgreSQL, visualisation Superset.</div>
+        <div class="proj-pipeline">Kafka → Spark → PostgreSQL → Superset</div>
+        <div class="proj-tech"><span class="skill-tag">Kafka</span><span class="skill-tag">Spark</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Superset</span><span class="skill-tag">Docker</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🌽</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">Prédiction du Rendement du Maïs au Togo</div>
+        <div class="proj-desc">Modèle prédictif du rendement agricole selon la méthodologie CRISP-DM, développé sous KNIME. Mémoire académique complet rédigé en LaTeX.</div>
+        <div class="proj-tech"><span class="skill-tag">KNIME</span><span class="skill-tag">CRISP-DM</span><span class="skill-tag">LaTeX</span><span class="skill-tag">ML</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">👥</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">TalentFlow — Pipeline RH Intelligent</div>
+        <div class="proj-desc">Rôle Data Engineer dans un projet d'équipe. Conception du pipeline d'ingestion et transformation (couche Silver), objectifs ≥95% déduplication et ≤5 min latence.</div>
+        <div class="proj-pipeline">Kafka → Spark → Airflow → MinIO → MongoDB</div>
+        <div class="proj-tech"><span class="skill-tag">Kafka</span><span class="skill-tag">Spark</span><span class="skill-tag">Airflow</span><span class="skill-tag">MongoDB</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🏥</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">Pipeline Médical — Détection Cancer du Sein</div>
+        <div class="proj-desc">Base MongoDB (cancer_sein_db) avec CRUD et agrégations, couplée à un pipeline Python de traitement d'images médicales sur le dataset CBIS-DDSM.</div>
+        <div class="proj-tech"><span class="skill-tag">MongoDB</span><span class="skill-tag">Python</span><span class="skill-tag">PyMongo</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🗄️</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">TP MongoDB — Automatisation Big Data</div>
+        <div class="proj-desc">Application complète : API FastAPI + interface Streamlit. CRUD, agrégations, import CSV avec déduplication, archivage automatique, promotions conditionnelles. Docker.</div>
+        <div class="proj-tech"><span class="skill-tag">MongoDB</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Streamlit</span><span class="skill-tag">Docker</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🌡️</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">Monitoring Température & Humidité</div>
+        <div class="proj-desc">Premier pipeline Data Engineering : DHT11 → ESP32 → MQTT → Python → InfluxDB → Grafana. Dashboard temps réel avec rafraîchissement toutes les 30 secondes.</div>
+        <div class="proj-pipeline">DHT11 → ESP32 → MQTT → Python → InfluxDB → Grafana</div>
+        <div class="proj-tech"><span class="skill-tag">ESP32</span><span class="skill-tag">DHT11</span><span class="skill-tag">MQTT</span><span class="skill-tag">Grafana</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph/esp32-iot-monitoring" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><div class="proj-icon">🏠</div><span class="proj-status s-live">Terminé</span></div>
+        <div class="proj-title">Domotique IoT · Présence Biométrique · Toise IoT</div>
+        <div class="proj-desc">Système domotique connecté contrôlable à distance, système de présence par empreinte digitale avec reporting, et toise intelligente (taille/poids sur Android et PC).</div>
+        <div class="proj-tech"><span class="skill-tag">ESP32</span><span class="skill-tag">Arduino</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span></div>
+        <div class="proj-foot"><a href="https://github.com/abanamjoseph" target="_blank" class="proj-link">Voir sur GitHub →</a></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- FORMATION -->
+<section class="section" id="education">
+  <div class="section-label">Formation</div>
+  <h2 class="section-title">Cursus académique</h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-year">2026</div>
+      <div class="edu-deg">Master 1 Big Data — ESI (en cours)</div>
+      <div class="edu-school">UCAO-UUT · Lomé, Togo · cours du soir</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2022</div>
+      <div class="edu-deg">Licence Prof. Génie Électrique</div>
+      <div class="edu-school">École Polytechnique de Lomé (EPL-UL)</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2018</div>
+      <div class="edu-deg">BAC II — Série F2 (Électronique)</div>
+      <div class="edu-school">ISSET · Tsévié, Togo</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2021</div>
+      <div class="edu-deg">Systèmes Photovoltaïques</div>
+      <div class="edu-school">JRDR · Tsévié, Togo</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Travaillons ensemble</h2>
+  <div class="contact-wrap reveal">
+    <p class="contact-intro">Ouvert aux opportunités en Data Engineering, IoT et Génie Électrique. Disponible pour des collaborations, stages ou projets à impact en Afrique.</p>
+    <div class="contact-grid">
+      <a href="mailto:abanamjo2@gmail.com" class="c-card">
+        <div class="c-icon">✉️</div>
+        <div><div class="c-lbl">Email</div><div class="c-val">abanamjo2@gmail.com</div></div>
+      </a>
+      <a href="https://wa.me/22898464143" target="_blank" class="c-card">
+        <div class="c-icon">💬</div>
+        <div><div class="c-lbl">WhatsApp</div><div class="c-val">+228 98 46 41 43</div></div>
+      </a>
+      <a href="tel:+22892182435" class="c-card">
+        <div class="c-icon">📞</div>
+        <div><div class="c-lbl">Appel</div><div class="c-val">+228 92 18 24 35</div></div>
+      </a>
+      <a href="https://github.com/abanamjoseph" target="_blank" class="c-card">
+        <div class="c-icon">🐙</div>
+        <div><div class="c-lbl">GitHub</div><div class="c-val">abanamjoseph</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/joseph-abanam-a386a7295" target="_blank" class="c-card">
+        <div class="c-icon">💼</div>
+        <div><div class="c-lbl">LinkedIn</div><div class="c-val">joseph-abanam</div></div>
+      </a>
+      <a href="https://abanam-joseph.github.io" target="_blank" class="c-card">
+        <div class="c-icon">🌐</div>
+        <div><div class="c-lbl">Portfolio</div><div class="c-val">abanam-joseph.github.io</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>ABANAM Essowasinam Joseph</span> · Lomé, Togo 🇹🇬</p>
+  <p style="margin-top:6px;">Ingénieur Génie Électrique · Data Engineer · Formateur IA/Robotique · Enseignant</p>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
